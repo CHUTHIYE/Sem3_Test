@@ -1,47 +1,47 @@
 const songService = require("../services/Songservice");
 
-exports.get_all_songs = async (req, res) => {
+exports.getAllSongs = async (req, res) => {
   try {
-    const songs = await songService.get_all_songs();
+    const songs = await songService.getAllSongs();
     res.json({ data: songs, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-exports.add_a_new_song = async (req, res) => {
+exports.createSong = async (req, res) => {
   try {
-    const song = await songService.add_a_new_song(req.body);
+    const song = await songService.createSong(req.body);
     res.json({ data: song, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-exports.get_a_specific_song_by_ID = async (req, res) => {
+exports.getSongById = async (req, res) => {
   try {
     const songId = req.params.id;
-    const song = await songService.get_a_specific_song_by_ID(songId);
+    const song = await songService.getSongById(songId);
     res.json({ data: song, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-exports.update_a_song_by_ID = async (req, res) => {
+exports.updateSong = async (req, res) => {
   try {
     const songId = req.params.id;
-    const updatedSong = await songService.update_a_song_by_ID(songId, req.body);
+    const updatedSong = await songService.updateSong(songId, req.body);
     res.json({ data: updatedSong, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
-exports.delete_a_song_by_ID = async (req, res) => {
+exports.deleteSong = async (req, res) => {
   try {
     const songId = req.params.id;
-    const deletedSong = await songService.delete_a_song_by_ID(songId);
+    const deletedSong = await songService.deleteSong(songId);
     res.json({ data: deletedSong, status: "success" });
   } catch (err) {
     res.status(500).json({ error: err.message });
